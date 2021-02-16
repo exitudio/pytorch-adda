@@ -20,6 +20,7 @@ class Discriminator(nn.Module):
             nn.Linear(hidden_dims, output_dims),
             nn.LogSoftmax()
         )
+        self.layer = nn.DataParallel(self.layer)
 
     def forward(self, input):
         """Forward the discriminator."""

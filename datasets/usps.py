@@ -93,6 +93,7 @@ class USPS(data.Dataset):
         if os.path.isfile(filename):
             return
         print("Download %s to %s" % (self.url, os.path.abspath(filename)))
+        print('---',self.url, filename)
         urllib.request.urlretrieve(self.url, filename)
         print("[DONE]")
         return
@@ -119,8 +120,8 @@ def get_usps(train):
     # image pre-processing
     pre_process = transforms.Compose([transforms.ToTensor(),
                                       transforms.Normalize(
-                                          mean=params.dataset_mean,
-                                          std=params.dataset_std)])
+                                          mean=(params.dataset_mean_value,),
+                                          std=(params.dataset_std_value,))])
 
     # dataset and data loader
     usps_dataset = USPS(root=params.data_root,

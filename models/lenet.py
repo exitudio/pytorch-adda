@@ -29,6 +29,7 @@ class LeNetEncoder(nn.Module):
             nn.ReLU()
         )
         self.fc1 = nn.Linear(50 * 4 * 4, 500)
+        self.fc1 = nn.DataParallel(self.fc1)
 
     def forward(self, input):
         """Forward the LeNet."""

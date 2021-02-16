@@ -10,12 +10,14 @@ from torch.autograd import Variable
 import params
 from datasets import get_mnist, get_usps
 
+device = torch.device(
+            "cuda:0" if torch.cuda.is_available() else "cpu")
 
 def make_variable(tensor, volatile=False):
     """Convert Tensor to Variable."""
     if torch.cuda.is_available():
         tensor = tensor.cuda()
-    return Variable(tensor, volatile=volatile)
+    return tensor.to(device) # Variable(tensor, volatile=volatile)
 
 
 def make_cuda(tensor):
