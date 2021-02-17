@@ -25,5 +25,5 @@ def get_mnist(train):
         dataset=mnist_dataset,
         batch_size=params.batch_size,
         shuffle=True)
-
+    print('mnist_data_loader:', len(mnist_data_loader))
     return mnist_data_loader
