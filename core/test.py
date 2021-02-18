@@ -28,7 +28,7 @@ def eval_tgt(encoder, classifier, data_loader):
         loss += criterion(preds, labels).data.item()
 
         pred_cls = preds.data.max(1)[1]
-        acc += pred_cls.eq(labels.data).cpu().sum()
+        acc += pred_cls.eq(labels.data).cpu().sum().item()
 
     loss /= len(data_loader)
     acc /= len(data_loader.dataset)
