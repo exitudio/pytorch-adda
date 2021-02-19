@@ -17,7 +17,7 @@ def make_variable(tensor, volatile=False):
     """Convert Tensor to Variable."""
     if torch.cuda.is_available():
         tensor = tensor.cuda()
-    return tensor.to(device) # Variable(tensor, volatile=volatile)
+    return Variable(tensor, volatile=volatile) # tensor.to(device) # 
 
 
 def make_cuda(tensor):

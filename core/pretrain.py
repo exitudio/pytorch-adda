@@ -20,7 +20,7 @@ def train_src(encoder, classifier, data_loader):
     # setup criterion and optimizer
     optimizer = optim.Adam(
         list(encoder.parameters()) + list(classifier.parameters()),
-        lr=params.c_learning_rate,
+        lr=params.c_s_learning_rate,
         betas=(params.beta1, params.beta2))
     criterion = nn.CrossEntropyLoss()
 
@@ -93,7 +93,7 @@ def eval_src(encoder, classifier, data_loader):
         loss += criterion(preds, labels).data.item()
 
         pred_cls = preds.data.max(1)[1]
-        acc += pred_cls.eq(labels.data).cpu().sum()
+        acc += pred_cls.eq(labels.data).cpu().sum().item()
 
     loss /= len(data_loader)
     acc /= len(data_loader.dataset)
