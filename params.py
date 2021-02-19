@@ -35,7 +35,7 @@ log_step_pre = 20 # by steps
 eval_step_pre = 20 # by epochs
 save_step_pre = 5 # by epochs
 
-num_epochs = 2
+num_epochs = 8
 log_step = 20 # by steps
 save_step = 2 # by epochs
 manual_seed = None
@@ -43,6 +43,6 @@ manual_seed = None
 # params for optimizing models
 d_learning_rate = 1e-3
 c_s_learning_rate = 1e-4
-c_t_learning_rate = 1e-5
+c_t_learning_rate = 3e-6
 beta1 = 0.5
 beta2 = 0.9

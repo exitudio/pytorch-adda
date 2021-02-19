@@ -21,8 +21,9 @@ def train_tgt(src_encoder, tgt_encoder, critic,
     tgt_encoder.train()
     critic.train()
 
+
     # setup criterion and optimizer
-    criterion = nn.CrossEntropyLoss()
+    criterion = nn.NLLLoss() # nn.CrossEntropyLoss()
     optimizer_tgt = optim.Adam(tgt_encoder.parameters(),
                                lr=params.c_t_learning_rate,
                                betas=(params.beta1, params.beta2))
